@@ -9,7 +9,14 @@
 </head>
 <body style="font-family: Arial, sans-serif; text-align: center; margin-top: 50px;">
     <form method="POST">
-        <textarea name="user_text" rows="4" cols="50" placeholder="insult me..."></textarea><br><br>
+        <p>Question {{ current_question + 1 }} of 7</p>
+        <p>{{ question.question }}</p>
+        {% for option in question.options %}
+            <input type="radio" name="user_answer" value="{{ loop.index0 }}" required> {{ option }}<br>
+        {% endfor %}
+        <input type="hidden" name="current_question" value="{{ current_question }}">
+        <input type="hidden" name="correct_answers" value="{{ correct_answers }}">
+        <br>
         <button type="submit">submit</button>
     </form>
     <h2>{{ text }}</h2>
