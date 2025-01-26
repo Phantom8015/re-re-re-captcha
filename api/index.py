@@ -1,6 +1,7 @@
 import os
 import base64
 import requests
+import random
 from flask import Flask, request, render_template, redirect
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
@@ -61,7 +62,7 @@ questions = [
     },
     {
         "question": "what's the best haircut for MASSIVE rizz?",
-        "options": ["bald", "low taper fade", "low taper line", "high taper fade"],
+        "options": ["bald", "low taper fade", "low aldi fade", "high taper fade"],
         "answer": 1
     },
     {
@@ -85,12 +86,19 @@ questions = [
 @limiter.limit("100 per minute")
 def redirect_to_url(encoded_url):
     try:
+        for i in range(len(questions)):
+            j = random.randint(0, len(questions) - 1)
+            questions[i], questions[j] = questions[j], questions[i]
+    
         decoded_url = base64.b64decode(encoded_url).decode()
         text = ""
         current_question = 0
         correct_answers = 0
         
         if request.method == "POST":
+            if request.form.get("proceed"):
+                return redirect(decoded_url)
+                
             current_question = int(request.form.get("current_question", 0))
             user_answer = int(request.form.get("user_answer", -1))
             correct_answers = int(request.form.get("correct_answers", 0))
@@ -100,10 +108,9 @@ def redirect_to_url(encoded_url):
             current_question += 1
             
             if current_question >= len(questions):
-                if correct_answers >= 5:
-                    return redirect(decoded_url)
-                else:
-                    return redirect("https://youtu.be/fsF7enQY8uI")
+                return render_template("index3.html", 
+                                    correct_answers=correct_answers,
+                                    url=request.url)
         
         if current_question < len(questions):
             return render_template(html_template, 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <header>
+        <h1>✨ re-re-re-captcha results ✨</h1>
+    </header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="font-family: Arial, sans-serif; text-align: center; margin-top: 50px;">
+    <h2>you got {{ correct_answers }} out of 7 questions correct</h2>
+    
+    {% if correct_answers >= 5 %}
+        <p>congratulations! you passed the test.</p>
+        <form method="POST">
+            <input type="hidden" name="proceed" value="true">
+            <button type="submit">proceed to site</button>
+        </form>
+    {% else %}
+        <p>you are a lizard</p>
+    {% endif %}
+</body>
+</html>
