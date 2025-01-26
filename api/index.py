@@ -26,7 +26,7 @@ limiter = Limiter(
 def redirect_to_url(encoded_url):
     try:
         decoded_url = base64.b64decode(encoded_url).decode()
-        text = "reReReCaptcha"
+        text = ""
         if request.method == "POST":
             user_text = request.form.get("user_text", "")
             if user_text.strip():
