@@ -47,7 +47,7 @@ questions = [
     {
         "question": "what's the ultimate sigma grindset morning routine?",
         "options": ["come out as gay", "watching sigma tate", "gooning", "edging"],
-        "answer": 1
+        "answer": 2
     },
     {
         "question": "finish the phrase: 'skibidi _____'",
@@ -57,7 +57,7 @@ questions = [
     {
         "question": "what does an ALPHA MALE do when rejected?",
         "options": ["cry", "GOON harder", "grind with sherry merry coo", "be gay"],
-        "answer": 1
+        "answer": 2
     },
     {
         "question": "what's the best haircut for MASSIVE rizz?",
@@ -67,7 +67,7 @@ questions = [
     {
         "question": "who's the ultimate goon lord?",
         "options": [f"gru", "the goon king", "kanye", "the WINNER"],
-        "answer": 2
+        "answer": 0
     },
     {
         "question": "gay?",
